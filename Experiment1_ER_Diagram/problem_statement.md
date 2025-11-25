@@ -1,143 +1,124 @@
-# ER Diagram Workshop – Submission Template
+Experiment 1: Entity-Relationship (ER) Diagram
+🎯 Objective:
+To understand and apply the concepts of ER modeling by creating an ER diagram for a real-world application.
 
-## Objective
-To understand and apply ER modeling concepts by creating ER diagrams for real-world applications.
+📚 Purpose:
+The purpose of this workshop is to gain hands-on experience in designing ER diagrams that visually represent the structure of a database including entities, relationships, attributes, and constraints.
 
-## Purpose
-Gain hands-on experience in designing ER diagrams that represent database structure including entities, relationships, attributes, and constraints.
+🧪 Choose One Scenario:
+🔹 Scenario 1: University Database
+Design a database to manage students, instructors, programs, courses, and student enrollments. Include prerequisites for courses.
 
----
+User Requirements:
 
-# Scenario A: City Fitness Club Management
+Academic programs grouped under departments.
+Students have admission number, name, DOB, contact info.
+Instructors with staff number, contact info, etc.
+Courses have number, name, credits.
+Track course enrollments by students and enrollment date.
+Add support for prerequisites (some courses require others).
+🔹 Scenario 2: Hospital Database
+Design a database for patient management, appointments, medical records, and billing.
 
-**Business Context:**  
-FlexiFit Gym wants a database to manage its members, trainers, and fitness programs.
+User Requirements:
 
-**Requirements:**  
-- Members register with name, membership type, and start date.  
-- Each member can join multiple programs (Yoga, Zumba, Weight Training).  
-- Trainers assigned to programs; a program may have multiple trainers.  
-- Members may book personal training sessions with trainers.  
-- Attendance recorded for each session.  
-- Payments tracked for memberships and sessions.
+Patient details including contact and insurance.
+Doctors and their departments, contact info, specialization.
+Appointments with reason, time, patient-doctor link.
+Medical records with treatments, diagnosis, test results.
+Billing and payment details for each appointment.
+📝 Tasks:
+Identify entities, relationships, and attributes.
+Draw the ER diagram using any tool (draw.io, dbdiagram.io, hand-drawn and scanned).
+Include:
+Cardinality & participation constraints
+Prerequisites for University OR Billing for Hospital
+Explain:
+Why you chose the entities and relationships.
+How you modeled prerequisites or billing.
+ER Diagram Submission - Student Name
+Name : SRINIVASAN V
 
-### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_fitness.png)
+Reg No : 212222043008
 
-### Entities and Attributes
+Scenario Chosen:
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+University
 
-### Relationships and Constraints
+ER Diagram:
+image
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+Entities and Attributes:
+Student
 
-### Assumptions
-- 
-- 
-- 
+Attributes: StudentID, FirstName, LastName, DateOfBirth, Email, PhoneNumber, EnrollmentDate, DepartmentID.
 
----
+Faculty
 
-# Scenario B: City Library Event & Book Lending System
+Attributes: FacultyID, FirstName, LastName, Email, PhoneNumber, HireDate, DepartmentID.
 
-**Business Context:**  
-The Central Library wants to manage book lending and cultural events.
+Department
 
-**Requirements:**  
-- Members borrow books, with loan and return dates tracked.  
-- Each book has title, author, and category.  
-- Library organizes events; members can register.  
-- Each event has one or more speakers/authors.  
-- Rooms are booked for events and study.  
-- Overdue fines apply for late returns.
+Attributes: DepartmentID, DepartmentName, Location.
 
-### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_library.png)
+Course
 
-### Entities and Attributes
+Attributes: CourseID, CourseName, CourseCode, Credits, DepartmentID.
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+Enrollment
 
-### Relationships and Constraints
+Attributes: EnrollmentID, StudentID, CourseID, EnrollmentDate, Grade.
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+Class
 
-### Assumptions
-- 
-- 
-- 
+Attributes: ClassID, CourseID, FacultyID, Semester, Year, Schedule.
 
----
+Advising
 
-# Scenario C: Restaurant Table Reservation & Ordering
+Attributes: AdvisingID, StudentID, FacultyID, AdvisingDate.
 
-**Business Context:**  
-A popular restaurant wants to manage reservations, orders, and billing.
+Relationships and Constraints:
+Student–Advising–Faculty:
 
-**Requirements:**  
-- Customers can reserve tables or walk in.  
-- Each reservation includes date, time, and number of guests.  
-- Customers place food orders linked to reservations.  
-- Each order contains multiple dishes; dishes belong to categories (starter, main, dessert).  
-- Bills generated per reservation, including food and service charges.  
-- Waiters assigned to serve reservations.
+Relationship: Advises Cardinality: Many-to-Many (each student can have multiple advisors, each faculty can advise multiple students) Participation: Total on Advising
 
-### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_restaurant.png)
+Student–Enrollment–Course
 
-### Entities and Attributes
+Relationship: Enrolled in Cardinality: Many-to-Many Participation: Total on Enrollment
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+Course–Class–Faculty:
 
-### Relationships and Constraints
+Relationship: Teaches Cardinality: Many-to-Many (each course can be taught in multiple classes, each faculty can teach multiple classes)
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+Course–Department:
 
-### Assumptions
-- 
-- 
-- 
+Relationship: Offered by Cardinality: Many-to-One (Each course belongs to one department)
 
----
+Student–Department:
 
-## Instructions for Students
+Relationship: Belongs to Cardinality: Many-to-One
 
-1. Complete **all three scenarios** (A, B, C).  
-2. Identify entities, relationships, and attributes for each.  
-3. Draw ER diagrams using **draw.io / diagrams.net** or hand-drawn & scanned.  
-4. Fill in all tables and assumptions for each scenario.  
-5. Export the completed Markdown (with diagrams) as **a single PDF**
+Faculty–Department:
+
+Relationship: Belongs to Cardinality: Many-to-One
+
+Class–Course:
+
+Relationship: Includes Cardinality: Many-to-One
+
+Enrollment–Class:
+
+Relationship: Taught by Not standard; assumes indirect mapping via faculty
+
+Extension (Prerequisite / Billing):
+Prerequisite Modeling: Could be modeled with a recursive relationship on Course: Relationship: Requires Cardinality: Many-to-Many (a course can have many prerequisites and be a prerequisite for many others)
+
+Design Choices:
+Use of separate entities for Advising, Enrollment, and Class helps normalize many-to-many relationships and maintain relational integrity. Department as a central entity provides a logical way to group students, faculty, and courses.
+
+Class entity includes scheduling details, separating course content from the time/location of delivery.
+
+The design is modular and supports easy extension for future requirements like prerequisites, billing, or attendance.
+
+RESULT
+Thus, the Entity-Relationship (ER) Diagram have been created successfully.
