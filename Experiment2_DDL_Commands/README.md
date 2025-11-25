@@ -1,4 +1,7 @@
 # Experiment 2: DDL Commands
+#NAME : SRINIVASAN V
+
+REG NO : 212222043008
 
 ## AIM
 To study and implement DDL commands and different types of constraints.
@@ -105,123 +108,224 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+-- Write an SQL query to change the name of the column id to employee_id in the table employee.
 
 ```sql
--- Paste your SQL code below for Question 1
+-- ALTER TABLE employee
+RENAME COLUMN id TO
+employee_id;
 ```
 
 **Output:**
 
-![Output1](output.png)
+![Screenshot 2025-04-28 220636](https://github.com/user-attachments/assets/b9a21c20-2765-4843-b08f-982e2cb8edf8)
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+-- In the Employee table, insert a record where some fields are NULL, another record where all fields are filled without any NULL values, and a third record where some fields are filled, and others are left as NULL.
+
+EmployeeID  Name          Position    Department  Salary
+----------  ------------  ----------  ----------  ----------
+5           George Clark  Consultant
+7           Noah Davis    Manager     HR          60000
+8           Ava Miller    Consultant  IT
 
 ```sql
--- Paste your SQL code below for Question 2
+-- INSERT INTO Employee (EmployeeID,Name,Position,Department,Salary)
+VALUES (5,'George Clark','Consultant',NULL,NULL);
+INSERT INTO Employee (EmployeeID,Name,Position,Department,Salary)
+VALUES(7,'Noah Davis','Manager','HR',60000);
+INSERT INTO Employee (EmployeeID,Name,Position,Department,Salary)
+VALUES(8,'Ava Miller','Consultant','IT',NULL);
+
 ```
 
 **Output:**
 
-![Output2](output.png)
+![Screenshot 2025-04-28 220756](https://github.com/user-attachments/assets/a3c98f9d-7d72-4c57-a466-0309dbbef992)
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+-- Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should cascade updates and deletes.
+item_desc and rate should not accept NULL.
 
 ```sql
--- Paste your SQL code below for Question 3
+-- CREATE TABLE item(
+    item_id text primary key,
+    item_desc text not null,
+    rate integer not null,
+    icom_id text(4),
+    foreign key (icom_id)references company(com_id)
+    on update cascade
+    on delete cascade
+);
 ```
 
 **Output:**
 
-![Output3](output.png)
+![Screenshot 2025-04-28 220904](https://github.com/user-attachments/assets/46c4b0bb-4eaf-4106-87fd-80c985324895)
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+-- Insert the below data into the Customers table, allowing the City and ZipCode columns to take their default values.
+
+CustomerID  Name          Address
+----------  ------------  ----------
+304         Peter Parker  Spider St      
+
+Note: The City and ZipCode columns will use their default values.
 
 ```sql
--- Paste your SQL code below for Question 4
+-- insert into Customers(CustomerID,Name,Address)
+values(304,'Peter Parker','Spider St');
 ```
 
 **Output:**
 
-![Output4](output.png)
+![Screenshot 2025-04-28 221000](https://github.com/user-attachments/assets/e712630f-f9c8-4c16-b606-9f63c289a119)
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+-- Insert all employees from Former_employees into Employee
+
+Table attributes are EmployeeID, Name, Department, Salary
 
 ```sql
--- Paste your SQL code below for Question 5
+-- insert into Employee(EmployeeID, Name, Department, Salary)
+select EmployeeID, Name, Department, Salary from Former_employees;
 ```
 
 **Output:**
 
-![Output5](output.png)
+![Screenshot 2025-04-28 221147](https://github.com/user-attachments/assets/69727e5c-ca98-43f5-908d-216e3ceae767)
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+-- Create a table named Invoices with the following constraints:
+
+InvoiceID as INTEGER should be the primary key.
+InvoiceDate as DATE.
+DueDate as DATE should be greater than the InvoiceDate.
+Amount as REAL should be greater than 0.
 
 ```sql
--- Paste your SQL code below for Question 6
+-- create table Invoices(
+    InvoiceID INTEGER primary key,
+    InvoiceDate DATE ,
+    DueDate DATE  CHECK(DueDate>InvoiceDate),
+    Amount real  check (Amount>0)
+);
 ```
 
 **Output:**
 
-![Output6](output.png)
+![Screenshot 2025-04-28 221244](https://github.com/user-attachments/assets/9aa3a914-9b70-420d-adf1-a6635ebe80c1)
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+-- Write a SQL query to Add a new column Mobilenumber as number in the Student_details table.
+
+Sample table: Student_details
+
+ cid              name             type             notnu  dflt_value  pk
+---------------  ---------------  ---------------  -----  ----------  ----------
+0                RollNo           int              0                  1
+1                Name             VARCHAR(100)     1                  0
+2                Gender           TEXT             1                  0
+3                Subject          VARCHAR(30)      0                  0
+4                MARKS            INT (3)          0                  0
 
 ```sql
--- Paste your SQL code below for Question 7
+-- alter table Student_details
+add column Mobilenumber number;
 ```
 
 **Output:**
 
-![Output7](output.png)
+![Screenshot 2025-04-28 221336](https://github.com/user-attachments/assets/49ffaf9c-7100-4c81-93b2-e44c35887e40)
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+-- Create a table named Products with the following constraints:
+ProductID as INTEGER should be the primary key.
+ProductName as TEXT should be unique and not NULL.
+Price as REAL should be greater than 0.
+StockQuantity as INTEGER should be non-negative.
 
 ```sql
--- Paste your SQL code below for Question 8
+-- create table Products(
+    ProductID integer primary key ,
+    ProductName text not null UNIQUE,
+    Price real check (Price>0),
+    StockQuantity integer check (StockQuantity>0)
+);
 ```
 
 **Output:**
 
-![Output8](output.png)
+![Screenshot 2025-04-28 221425](https://github.com/user-attachments/assets/84577984-ae27-4fa2-8fc7-ac2b003ab572)
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+-- Create a table named Products with the following columns:
+
+ProductID as INTEGER
+ProductName as TEXT
+Price as REAL
+Stock as INTEGER
 
 ```sql
--- Paste your SQL code below for Question 9
+-- create table Products(
+    ProductID INTEGER,
+    ProductName TEXT,
+    Price REAL,
+    Stock INTEGER
+);
 ```
 
 **Output:**
 
-![Output9](output.png)
+![Screenshot 2025-04-28 221517](https://github.com/user-attachments/assets/66d188b8-5ed2-44cd-b80b-36b5b3514d5b)
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+-- Create a table named ProjectAssignments with the following constraints:
+AssignmentID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+ProjectID as INTEGER should be a foreign key referencing Projects(ProjectID).
+AssignmentDate as DATE should be NOT NULL.
 
 ```sql
--- Paste your SQL code below for Question 10
+-- create table ProjectAssignments(
+    AssignmentID INTEGER primary key,
+    EmployeeID INTEGER,
+    ProjectID INTEGER,
+    AssignmentDate DATE NOT NULL,
+    foreign key(EmployeeID) references Employees(EmployeeID)
+    foreign key(projectID) references Projects(ProjectID)
+    
+);
 ```
 
 **Output:**
 
-![Output10](output.png)
+![Screenshot 2025-04-28 221614](https://github.com/user-attachments/assets/16ab9458-fa03-4f4d-a490-40b21611ccb9)
+
 
 
 ## RESULT
